@@ -15,6 +15,7 @@ def create():
   post = Post(**data)
   db.session.add(post)
   db.session.commit()
+  print("POST:", post)
   return jsonify(post.serialize()), 201
 
 @posts.route('/', methods=["GET"])

@@ -5,6 +5,7 @@ class Post(db.Model):
     __tablename__ = 'posts'
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100))
+    question = db.Column(db.String(250))
     code_block = db.Column(db.String(250))
     explanation = db.Column(db.String(250))
     do_good  = db.Column(db.String(250))
@@ -17,5 +18,5 @@ class Post(db.Model):
       return f"Post('{self.id}', '{self.title}'"
 
     def serialize(self):
-      post = {c.title: getattr(self, c.title) for c in self.__table__.columns}
+      post = {c.name: getattr(self, c.name) for c in self.__table__.columns}
       return post
